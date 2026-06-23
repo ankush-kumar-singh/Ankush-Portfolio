@@ -576,6 +576,94 @@
   .mobile-nav a:hover { color: var(--accent); }
   .mobile-nav-close { position: absolute; top: 20px; right: 20px; font-size: 24px; color: var(--muted); cursor: pointer; background: none; border: none; }
 
+  /* RESUME SECTION */
+  #resume { background: var(--surface); }
+  .resume-wrap {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+  }
+  .resume-info h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+  .resume-info p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
+  .resume-highlights { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .resume-highlight-item {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 13px; color: var(--muted);
+  }
+  .resume-highlight-item span { color: var(--accent); font-size: 16px; }
+  .resume-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .resume-preview {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .resume-preview-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+  }
+  .resume-preview-title { font-size: 15px; font-weight: 600; }
+  .resume-preview-sub { font-size: 12px; color: var(--dim); margin-top: 2px; }
+  .resume-file-badge {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 12px;
+    font-size: 11px; color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .resume-section-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    font-size: 12px; color: var(--muted);
+  }
+  .resume-section-row:last-child { border-bottom: none; }
+  .resume-section-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  @media (max-width: 768px) {
+    .resume-wrap { grid-template-columns: 1fr; }
+  }
+
+  /* PROJECT FILTER TABS */
+  .project-filters {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px;
+  }
+  .filter-btn {
+    padding: 7px 16px; border-radius: 20px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--muted); font-size: 12px; font-weight: 500;
+    cursor: pointer; transition: all 0.2s;
+    font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.04em;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent); color: var(--accent); background: var(--glow);
+  }
+  .project-card.hidden { display: none; }
+  .featured-badge {
+    position: absolute; top: 16px; right: 16px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff; font-size: 10px; font-weight: 600;
+    padding: 3px 10px; border-radius: 20px; letter-spacing: 0.08em;
+  }
+  .project-card-img {
+    width: 100%; height: 160px; object-fit: cover;
+    border-radius: 10px; margin-bottom: 16px;
+    border: 1px solid var(--border);
+  }
+  .project-img-placeholder {
+    width: 100%; height: 160px; border-radius: 10px;
+    background: var(--surface2); border: 1px dashed var(--border);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; color: var(--dim); font-size: 12px; margin-bottom: 16px;
+  }
+  .project-links { display: flex; gap: 10px; margin-top: 16px; }
+  .project-link-btn {
+    display: flex; align-items: center; gap: 6px;
+    padding: 7px 14px; border-radius: 8px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--muted); font-size: 12px; text-decoration: none;
+    transition: all 0.2s; font-family: 'Space Grotesk', sans-serif;
+  }
+  .project-link-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--glow); }
+  .project-link-btn.primary-link {
+    background: var(--glow); border-color: var(--accent); color: var(--accent);
+  }
+
   /* GLOW BG BLOBS */
   .blob {
     position: fixed; border-radius: 50%; filter: blur(100px);
@@ -616,9 +704,11 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#resume">Resume</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-actions">
+    <a href="resume.pdf" download="Ankush_Kumar_Singh_Resume.pdf" class="btn-primary" style="font-size:12px;padding:8px 16px;text-decoration:none;">CV ↓</a>
     <button class="theme-toggle" id="themeToggle" title="Toggle theme">☀️</button>
     <div class="hamburger" id="hamburger" onclick="toggleMobileNav()">
       <span></span><span></span><span></span>
@@ -634,6 +724,7 @@
   <a href="#projects" onclick="toggleMobileNav()">Projects</a>
   <a href="#experience" onclick="toggleMobileNav()">Experience</a>
   <a href="#certifications" onclick="toggleMobileNav()">Certifications</a>
+  <a href="#resume" onclick="toggleMobileNav()">Resume</a>
   <a href="#contact" onclick="toggleMobileNav()">Contact</a>
 </div>
 
@@ -649,8 +740,8 @@
       Transforming raw data into clear business insights. Skilled in Python, SQL, Power BI, and machine learning fundamentals — IBM certified and passionate about data-driven decision making.
     </p>
     <div class="hero-btns">
-      <a href="https://github.com/ankush-kumar-singh" target="_blank" class="btn-primary">View GitHub →</a>
-      <a href="#contact" class="btn-outline">Contact Me</a>
+      <a href="resume.pdf" download="Ankush_Kumar_Singh_Resume.pdf" class="btn-primary">Download Resume ↓</a>
+      <a href="#resume" class="btn-outline">View Resume</a>
       <a href="#projects" class="btn-outline">See Projects</a>
     </div>
     <div class="hero-social">
@@ -846,61 +937,15 @@
     <div class="section-label">Projects</div>
     <h2 class="section-title fade-in">What I've Built</h2>
     <p class="section-sub fade-in">Real-world data projects from internships, certifications, and independent exploration.</p>
-    <div class="projects-grid">
-      <div class="project-card fade-in">
-        <div class="project-status status-live"><span class="status-dot"></span> Completed</div>
-        <div class="project-title">HotelRevAI</div>
-        <p class="project-desc">AI-driven hotel revenue analysis dashboard built during the Infosys Springboard internship. Analyzed booking trends, ratings, and revenue KPIs using Power BI with DAX and Power Query transformations.</p>
-        <div class="project-tags">
-          <span class="project-tag">Power BI</span>
-          <span class="project-tag">DAX</span>
-          <span class="project-tag">Power Query</span>
-          <span class="project-tag">KPI Design</span>
-        </div>
-        <div class="project-metrics">
-          <div class="metric"><div class="metric-val">20%</div><div class="metric-label">Data Quality ↑</div></div>
-          <div class="metric"><div class="metric-val">4hrs</div><div class="metric-label">Weekly Saved</div></div>
-          <div class="metric"><div class="metric-val">2</div><div class="metric-label">Dashboards</div></div>
-        </div>
-      </div>
-      <div class="project-card fade-in">
-        <div class="project-status status-live"><span class="status-dot"></span> Completed</div>
-        <div class="project-title">Student Data Analysis</div>
-        <p class="project-desc">Exploratory data analysis on student demographics and academic performance during Cloud Counselage internship. Identified key correlations between GPA, income levels, and Python proficiency.</p>
-        <div class="project-tags">
-          <span class="project-tag">Python</span>
-          <span class="project-tag">Pandas</span>
-          <span class="project-tag">Matplotlib</span>
-          <span class="project-tag">Seaborn</span>
-        </div>
-        <div class="project-metrics">
-          <div class="metric"><div class="metric-val">EDA</div><div class="metric-label">Methodology</div></div>
-          <div class="metric"><div class="metric-val">3+</div><div class="metric-label">Key Insights</div></div>
-        </div>
-      </div>
-      <div class="project-card fade-in">
-        <div class="project-status status-wip"><span class="status-dot"></span> In Progress</div>
-        <div class="project-title">Beej — Crop Advisor App</div>
-        <p class="project-desc">Leading a 6-member team at Smart India Hackathon 2025. Building an AI-powered app recommending optimal crops to farmers based on soil data, climate patterns, and market trends.</p>
-        <div class="project-tags">
-          <span class="project-tag">SIH 2025</span>
-          <span class="project-tag">AI/ML</span>
-          <span class="project-tag">AgriTech</span>
-          <span class="project-tag">Team Lead</span>
-        </div>
-        <div class="project-metrics">
-          <div class="metric"><div class="metric-val">6</div><div class="metric-label">Team Size</div></div>
-          <div class="metric"><div class="metric-val">2025</div><div class="metric-label">Active</div></div>
-        </div>
-      </div>
-      <div class="project-card fade-in">
-        <div class="project-status status-wip"><span class="status-dot"></span> Coming Soon</div>
-        <div class="project-title">More Projects Being Added</div>
-        <div class="project-placeholder">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 8v8M8 12h8"/></svg>
-          <span>New project currently under development</span>
-        </div>
-      </div>
+    <div class="project-filters fade-in">
+      <button class="filter-btn active" data-filter="all">All Projects</button>
+      <button class="filter-btn" data-filter="Power BI">Power BI</button>
+      <button class="filter-btn" data-filter="Python">Python</button>
+      <button class="filter-btn" data-filter="Machine Learning">Machine Learning</button>
+      <button class="filter-btn" data-filter="Data Analysis">Data Analysis</button>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Rendered by renderProjects() -->
     </div>
   </div>
 </section>
@@ -1214,13 +1259,257 @@
   </div>
 </section>
 
+<!-- RESUME -->
+<section id="resume">
+  <div class="section-inner">
+    <div class="section-label">Resume</div>
+    <h2 class="section-title fade-in">My Resume</h2>
+    <p class="section-sub fade-in">A snapshot of my skills, experience, and certifications — available to view or download.</p>
+    <div class="resume-wrap">
+      <div class="resume-info fade-in">
+        <h3>Ankush Kumar Singh</h3>
+        <p>Detail-oriented Data Analyst skilled in Python, SQL, Excel, and Power BI. IBM Certified with hands-on experience in data cleaning, visualization, and storytelling. Eager to transform data into actionable business insights.</p>
+        <div class="resume-highlights">
+          <div class="resume-highlight-item"><span>✅</span> IBM Data Analyst Professional Certified</div>
+          <div class="resume-highlight-item"><span>✅</span> Infosys Springboard Internship Experience</div>
+          <div class="resume-highlight-item"><span>✅</span> 285+ LeetCode Problems Solved</div>
+          <div class="resume-highlight-item"><span>✅</span> Multiple Hackathon Participations</div>
+          <div class="resume-highlight-item"><span>✅</span> B.Tech CSE (Data Science) — JUT</div>
+        </div>
+        <div class="resume-btns">
+          <a href="resume.pdf" download="Ankush_Kumar_Singh_Resume.pdf" class="btn-primary">Download Resume ↓</a>
+          <a href="resume.pdf" target="_blank" class="btn-outline">View Resume ↗</a>
+        </div>
+      </div>
+      <div class="resume-preview fade-in">
+        <div class="resume-preview-header">
+          <div>
+            <div class="resume-preview-title">Ankush_Kumar_Singh_Resume.pdf</div>
+            <div class="resume-preview-sub">Last updated · June 2026</div>
+          </div>
+          <div class="resume-file-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+            PDF
+          </div>
+        </div>
+        <div class="resume-section-row"><div class="resume-section-dot"></div>Summary & Profile</div>
+        <div class="resume-section-row"><div class="resume-section-dot" style="background:var(--accent2)"></div>Technical Skills</div>
+        <div class="resume-section-row"><div class="resume-section-dot"></div>Experience — Infosys Springboard · Cloud Counselage</div>
+        <div class="resume-section-row"><div class="resume-section-dot" style="background:var(--accent2)"></div>Projects — HotelRevAI · Titanic Prediction · Student Analysis</div>
+        <div class="resume-section-row"><div class="resume-section-dot"></div>Certifications — IBM Data Analyst · IBM Data Science</div>
+        <div class="resume-section-row"><div class="resume-section-dot" style="background:var(--accent2)"></div>Education — B.Tech CSE (Data Science) · JUT</div>
+        <div class="resume-section-row"><div class="resume-section-dot"></div>Activities — SIH 2025 · DevFest · Hackathons</div>
+        <div style="margin-top:8px;padding-top:16px;border-top:1px solid var(--border);display:flex;gap:10px">
+          <a href="resume.pdf" download="Ankush_Kumar_Singh_Resume.pdf" class="project-link-btn primary-link">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download
+          </a>
+          <a href="resume.pdf" target="_blank" class="project-link-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Open in Browser
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <p>Designed & built by <span>Ankush Kumar Singh</span> · Data Analyst · CSE (Data Science) · 2025</p>
   <p style="margin-top:6px">hc.ankush@gmail.com · +91 9973697702</p>
 </footer>
 
 <script>
+// ============================================================
+// CENTRALIZED CONFIG — Edit here only. No UI changes needed.
+// ============================================================
+
+const RESUME_CONFIG = {
+  filename: 'resume.pdf',
+  downloadName: 'Ankush_Kumar_Singh_Resume.pdf',
+  lastUpdated: 'June 2026',
+  // To update resume: replace resume.pdf in your Netlify folder.
+  // To rename: change filename + downloadName here only.
+};
+
+const PROJECTS = [
+  {
+    id: 1,
+    title: 'Titanic Survival Prediction',
+    shortDesc: 'End-to-end ML project predicting Titanic passenger survival using Python, EDA, feature engineering, and machine learning.',
+    longDesc: 'Complete data science pipeline from raw data to predictions. Performed thorough EDA, feature engineering, and trained classification models. Visualized insights with Matplotlib and built a Power BI dashboard for stakeholder reporting.',
+    tags: ['Python', 'Machine Learning', 'Data Analysis'],
+    tech: ['Python', 'Pandas', 'NumPy', 'Scikit-Learn', 'Matplotlib', 'Power BI'],
+    github: 'https://github.com/ankush-kumar-singh/titanic_survival_prediction',
+    liveDemo: null,
+    image: null,
+    status: 'completed',
+    featured: true,
+    date: '2025',
+    category: 'Machine Learning',
+  },
+  {
+    id: 2,
+    title: 'HotelRevAI',
+    shortDesc: 'AI-driven hotel revenue analysis dashboard. Analyzed booking trends, ratings, and revenue KPIs using Power BI.',
+    longDesc: 'Built during Infosys Springboard internship. Created 2 interactive Power BI dashboards analyzing hotel revenue and booking trends. Used DAX and Power Query to reduce data inconsistencies by 20% and save ~4 hours weekly.',
+    tags: ['Power BI', 'Data Analysis'],
+    tech: ['Power BI', 'DAX', 'Power Query', 'KPI Design', 'Excel'],
+    github: null,
+    liveDemo: null,
+    image: null,
+    status: 'completed',
+    featured: true,
+    date: '2025',
+    category: 'Power BI',
+    metrics: [{ val: '20%', label: 'Data Quality ↑' }, { val: '4hrs', label: 'Weekly Saved' }, { val: '2', label: 'Dashboards' }],
+  },
+  {
+    id: 3,
+    title: 'Student Data Analysis',
+    shortDesc: 'Exploratory data analysis on student demographics and academic performance using Python.',
+    longDesc: 'Performed EDA on student data during Cloud Counselage internship. Identified key correlations between GPA, income levels, and Python proficiency. Delivered reports for decision-making.',
+    tags: ['Python', 'Data Analysis'],
+    tech: ['Python', 'Pandas', 'Matplotlib', 'Seaborn'],
+    github: null,
+    liveDemo: null,
+    image: null,
+    status: 'completed',
+    featured: false,
+    date: '2024',
+    category: 'Data Analysis',
+    metrics: [{ val: 'EDA', label: 'Methodology' }, { val: '3+', label: 'Key Insights' }],
+  },
+  {
+    id: 4,
+    title: 'Beej — Crop Advisor App',
+    shortDesc: 'AI-powered app recommending optimal crops to farmers based on soil data and climate patterns.',
+    longDesc: 'Led a 6-member team at Smart India Hackathon 2025. Built an intelligent crop recommendation system using ML models trained on soil composition, climate data, and market trends.',
+    tags: ['Python', 'Machine Learning'],
+    tech: ['Python', 'AI/ML', 'AgriTech'],
+    github: null,
+    liveDemo: null,
+    image: null,
+    status: 'completed',
+    featured: false,
+    date: '2025',
+    category: 'Machine Learning',
+    metrics: [{ val: '6', label: 'Team Size' }, { val: 'SIH', label: 'Hackathon' }],
+  },
+  // ➕ ADD NEW PROJECTS BELOW THIS LINE
+  // Copy this template:
+  // {
+  //   id: 5,
+  //   title: 'Your Project Title',
+  //   shortDesc: 'Short one-line description.',
+  //   longDesc: 'Detailed description.',
+  //   tags: ['Python', 'Data Analysis'],   // used for filtering
+  //   tech: ['Python', 'Pandas'],           // shown as tags on card
+  //   github: 'https://github.com/...',
+  //   liveDemo: 'https://...',
+  //   image: 'assets/images/project5.png', // null = auto placeholder
+  //   status: 'completed',  // 'completed' | 'in-progress' | 'planned'
+  //   featured: false,
+  //   date: '2026',
+  //   category: 'Data Analysis',
+  // },
+];
+
+// ============================================================
+// PROJECT RENDERER — Do not edit unless changing card design
+// ============================================================
+
+function getStatusBadge(status) {
+  const map = {
+    'completed': '<div class="project-status status-live"><span class="status-dot"></span> Completed</div>',
+    'in-progress': '<div class="project-status status-wip"><span class="status-dot"></span> In Progress</div>',
+    'planned': '<div class="project-status status-wip"><span class="status-dot"></span> Planned</div>',
+  };
+  return map[status] || map['planned'];
+}
+
+function getProjectImage(project) {
+  if (project.image) {
+    return `<img src="${project.image}" alt="${project.title}" class="project-card-img" onerror="this.parentNode.innerHTML='<div class=\\'project-img-placeholder\\'><svg width=\\'32\\' height=\\'32\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'1.5\\'><rect x=\\'3\\' y=\\'3\\' width=\\'18\\' height=\\'18\\' rx=\\'2\\'/></svg><span>Image coming soon</span></div>'">`;
+  }
+  return `<div class="project-img-placeholder">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    <span>Screenshot coming soon</span>
+  </div>`;
+}
+
+function getProjectLinks(project) {
+  let html = '<div class="project-links">';
+  if (project.github) {
+    html += `<a href="${project.github}" target="_blank" rel="noopener noreferrer" class="project-link-btn primary-link">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      GitHub
+    </a>`;
+  }
+  if (project.liveDemo) {
+    html += `<a href="${project.liveDemo}" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Live Demo
+    </a>`;
+  }
+  html += '</div>';
+  return html;
+}
+
+function getMetrics(project) {
+  if (!project.metrics || !project.metrics.length) return '';
+  return `<div class="project-metrics">
+    ${project.metrics.map(m => `<div class="metric"><div class="metric-val">${m.val}</div><div class="metric-label">${m.label}</div></div>`).join('')}
+  </div>`;
+}
+
+function renderProjects(filter = 'all') {
+  const grid = document.getElementById('projectsGrid');
+  // Sort: featured first
+  const sorted = [...PROJECTS].sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+
+  const html = sorted.map(p => {
+    const matchesFilter = filter === 'all' || p.tags.includes(filter);
+    const hiddenClass = matchesFilter ? '' : 'hidden';
+    return `
+    <div class="project-card fade-in ${hiddenClass}" data-tags="${p.tags.join(',')}" data-category="${p.category}">
+      ${p.featured ? '<div class="featured-badge">⭐ Featured</div>' : ''}
+      ${getStatusBadge(p.status)}
+      ${getProjectImage(p)}
+      <div class="project-title">${p.title}</div>
+      <p class="project-desc">${p.shortDesc}</p>
+      <div class="project-tags">
+        ${p.tech.map(t => `<span class="project-tag">${t}</span>`).join('')}
+      </div>
+      ${getMetrics(p)}
+      ${getProjectLinks(p)}
+    </div>`;
+  }).join('');
+
+  grid.innerHTML = html;
+
+  // Re-observe new cards for fade-in
+  grid.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}
+
+// ============================================================
+// FILTER BUTTONS
+// ============================================================
+document.addEventListener('DOMContentLoaded', () => {
+  renderProjects('all');
+
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProjects(btn.dataset.filter);
+    });
+  });
+});
+
+// ============================================================
 // LOADER
+// ============================================================
 window.addEventListener('load', () => {
   setTimeout(() => {
     const loader = document.getElementById('loader');
@@ -1274,7 +1563,6 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.classList.add('visible');
-      // Animate skill bars
       e.target.querySelectorAll('.skill-fill[data-width]').forEach(bar => {
         setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 100);
       });
@@ -1283,7 +1571,6 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.fade-in, .fade-in-left').forEach(el => observer.observe(el));
 
-// Also trigger skill bars in visible skill cats
 document.querySelectorAll('.skill-cat').forEach(el => {
   const catObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
